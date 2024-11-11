@@ -1,0 +1,75 @@
+!/bin/bash
+
+
+##############
+# Author : Avinash
+# Version : V 0.1
+# Date : 11th Nov 2024
+# Use : Calculator Function
+# #######################
+#
+#
+#
+# Display a menu for operations
+echo "Welcome to the Calculator!"
+echo "Choose an operation:"
+echo "1. Addition"
+echo "2. Subtraction"
+echo "3. Multiplication"
+echo "4. Division"
+read -p "Enter your choice (1/2/3/4): " choice
+
+# Prompt user to enter numbers only if a valid choice is made
+if [[ $choice -ge 1 && $choice -le 4 ]]; then
+  echo "Enter First number:"
+  read num1
+  echo "Enter Second number:"
+  read num2
+else
+  echo "Invalid choice. Exiting..."
+  exit 1
+fi
+
+# Define functions for each operation
+addition() {
+  result=$((num1 + num2))
+  echo "The addition of $num1 and $num2 is: $result"
+}
+
+subtraction() {
+  result=$((num1 - num2))
+  echo "The subtraction of $num1 from $num2 is: $result"
+}
+
+multiplication() {
+  result=$((num1 * num2))
+  echo "The multiplication of $num1 and $num2 is: $result"
+}
+
+division() {
+  if [[ $num2 -eq 0 ]]; then
+    echo "Error: Division by zero is not allowed."
+  else
+    result=$((num1 / num2))
+    echo "The division of $num1 by $num2 is: $result"
+  fi
+}
+
+# Execute the function based on user choice
+case $choice in
+  1)
+    addition
+    ;;
+  2)
+    subtraction
+    ;;
+  3)
+    multiplication
+    ;;
+  4)
+    division
+    ;;
+  *)
+    echo "Invalid choice. Please run the script again and choose a valid option."
+    ;;
+esac
